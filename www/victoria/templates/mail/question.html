@@ -1,0 +1,22 @@
+{% extends "mail/mail.html" %}
+
+{% block top %}
+	<h2>Новый вопрос на сайте {{ domain }}</h2>
+	<small>{{ item.date }}</small>
+{% endblock %}
+
+{% block content %}
+	<ul>
+		<li><strong>Тема:</strong> {{ item.subject }}</li>
+		<li><strong>ФИО:</strong> {{ item.name }}</li>
+		{% if item.email %}
+			<li><strong>E-mail:</strong> {{ item.email }}</li>
+		{% endif %}
+		{% if item.phone %}
+			<li><strong>Телефон:</strong> {{ item.phone }}</li>
+		{% endif %}
+		<li><strong>Вопрос:</strong> {{ item.question|safe|linebreaksbr }}</li>
+	</ul>
+	<br/>
+	<a href="http://{{ domain }}/admin/questionanswer/item/{{ item.id }}/">Посмотреть вопрос на сайте</a>
+{% endblock %}

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    
+	<meta name="author" content="web-aspect.ru">
+    <title>Главная</title>
+	<meta name="description" content="{% block description %}{{ request.flatpage.get_description }}{% endblock %}" />
+	<meta name="keywords" content="{% block keywords %}{{ request.flatpage.get_keywords }}{% endblock %}" />
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic|Roboto+Condensed:400italic,700italic,400,700&subset=latin,cyrillic,cyrillic-ext'
+				rel='stylesheet' type='text/css'>
+    <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/typography.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.css" rel="stylesheet">
+	<link href="{{ STATIC_URL }}favicon.ico" rel="icon" />
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/bootstrap/js/bootstrap.min.js"></script>
+	
+  </head>
+  <body>
+	<div class="wrapper">
+		<!--header-->
+		<div class="header">
+			<div class="container">
+				<div class="row-fluid">
+					<div class="p_l_360">
+						<a class="w_350 logo" href="/">
+							<img src="img/logo.png" alt="logo">
+						</a>
+						<div class="row-fluid block">
+							<div class="span7 header_form">
+								<form class="form-horizontal n_m" name="login" action="">
+									<div class="row-fluid">
+										<div class="span5">
+											<input type="text" class="span12 form-control" placeholder="Номер членской книжки">
+										</div>
+										<div class="span4">
+											<input type="password" class="span12 form-control" placeholder="Пароль">
+										</div>
+										<div class="span3">
+											<button type="submit" class="btn btn-default f_orange"><i class="fa fa-sign-in"></i>Войти</button>
+										</div>
+									</div>
+									
+								</form>
+								<div>
+									<span class="help-block shadow_white">Не зарегистрированы?  <a class="f_default" href="#">Регистрация</a></span>
+								</div>
+							</div>
+							<div class="span5 t_right">
+								<p class="phone shadow_dark">+7 (812)<span> 30 90 661</span></p>
+								<p class="adress n_m shadow_white">191023, Россия, Санкт-Петербург ,
+									Набережная реки Мойки,
+									д.24, офис 26</p>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12">
+								<ul class="main_menu">
+									<li class="active"><a href="#"><i class="fa fa-square fa-small"></i>Главная</a></li>
+									<li><a href="#"><i class="fa fa-square fa-small"></i>Вопрос-ответ</a></li>
+									<li><a href="#"><i class="fa fa-square fa-small"></i>Новости</a></li>
+									<li><a href="#"><i class="fa fa-square fa-small"></i>Статьи</a></li>
+									<li><a href="#"><i class="fa fa-square fa-small"></i>Видео</a></li>
+									<li><a href="#"><i class="fa fa-square fa-small"></i>Контакты</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!--header-->
+		
+		<!--sub_menu-->
+		<div class="container">	
+			<div class="row-fluid">
+				<div class="p_l_360">
+					<div class="w_350"></div>
+					<div class="row-fluid">
+						<div class="span12 m_block sub_menu f_bold f_big">
+							<div class="row-fluid">
+								<ul>
+									<li class="span4 active">
+										<p><a href="#"><i class="fa fa-square fa-small"></i>Департаменты</a></p>
+									</li>
+									<li class="span4">
+										<p><a href="#"><i class="fa fa-square fa-small"></i>Заявка на защиту прав</a></p>
+									</li>
+									<li class="span4 t_right">
+										<p><a href="#"><i class="fa fa-square fa-small"></i>База судебных решений</a></p>
+									</li>
+								</ul>
+							</div>
+							<div class="row-fluid">
+								<ul>
+									<li class="span4">
+										<p><a href="#"><i class="fa fa-square fa-small"></i>Рейтинг предприятий</a></p>
+									</li>
+									<li class="span5">
+										<p><a href="#"><i class="fa fa-square fa-small"></i>Форум для коммисаров</a></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end sub menu-->
+		
+		<!--slogan block-->
+		<div class="container">
+			<div class="row-fluid t_center b_block slogan">
+				<div class="span6 block">
+					<h2><span class="f_orange">Вступи</span> в члены организации</h2>
+					<hr>
+					<p class="f_extra_big"><i>
+					Гражданин, имеющий членскую книжку МООЗПП &laquo;ВВП&raquo;, получая помошь от опытных юристов, приобретает опыт так взаимодействовать с предприятиями и организациями, что сама возможность нарушения его прав становится невозможной
+					</i></p>
+				</div>
+				<div class="span6 block">
+					<h3 class="f_extra_big3">Нас уже 12 579!</h3>
+					<button class="btn btn-warning btn-large">Подать заявление <br>на членство</button>
+				</div>
+			</div>
+		</div>
+		<!--end slogan block-->
+		
+		<!--icon block-->
+		<div class="line margin_b_big">
+			<div class="container">
+				<div class="row-fluid b_block">
+					
+					<div class="span4 block">
+						<div class="row-fluid">
+							<div class="span4 icon_block">
+								<span class="icon"></span>
+								<strong class="f_big">2 579</strong>
+								<strong><small>комиссаров </small></strong>
+								<strong><small>организации </small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon2"></span>
+								<strong class="f_big">9 124</strong>
+								<strong><small>поданных</small></strong>
+								<strong><small>заявок</small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon3"></span>
+								<strong class="f_big">1 824</strong>
+								<strong><small>поданных</small></strong>
+								<strong><small>претензий</small></strong>
+								<strong><small>предприятиям</small></strong>
+							</div>		
+						</div>
+					</div>
+					
+					<div class="span4 block">
+						<div class="row-fluid">
+							<div class="span4 icon_block">
+								<span class="icon icon4"></span>
+								<strong class="f_big">9 124</strong>
+								<strong><small>решенных</small></strong>
+								<strong><small>вопросов</small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon5"></span>
+								<strong class="f_big">3 579</strong>
+								<strong><small>предприятий,	на которые поданы жалобы</small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon6"></span>
+								<strong class="f_big">15 579</strong>
+								<strong><small>добровольно</small></strong>
+								<strong><small>исполненных</small></strong>
+								<strong><small>претензий</small></strong>
+							</div>		
+						</div>
+					</div>
+					
+					<div class="span4 block">
+						<div class="row-fluid">
+							<div class="span4 icon_block">
+								<span class="icon icon7"></span>
+								<strong class="f_big">9 124</strong>
+								<strong><small>поданых</small></strong>
+								<strong><small>исков</small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon8"></span>
+								<strong class="f_big">6 169</strong>
+								<strong><small>выигранных</small></strong>
+								<strong><small>исков</small></strong>
+							</div>
+							<div class="span4 icon_block">
+								<span class="icon icon9"></span>
+								<strong class="f_big">21 154 523</strong>
+								<strong><small>взысканных</small></strong>
+								<strong><small>денег в пользу</small></strong>
+								<strong><small>потребителей</small></strong>
+							</div>		
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!--end icon_block-->
+		
+		<!--send abuse-->
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span12 block slogan">
+					<div class="row-fluid">
+						<div class="span3"></div>
+						<div class="span6 t_center">
+							<h4 class="f_extra_big2"><span class="f_orange">Не работают</span> законы?</h4>
+							<hr>
+							<p class="f_extra_big"><i>
+					Законы начнут работать тогда, когда каждый гражданин РФ возьмет на себя ответственность по защите своих прав.
+					<br>А МЫ поможем Вам в этом!
+							</i></p>
+							<button class="btn btn-warning btn-large f_up f_extra_big b_block
+							margin_t_big">Подать жалобу</button>
+						</div>
+						<div class="span3"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end send abuse-->
+
+		<!--content-->
+		<div class="container">
+			<div class="row-fluid">
+
+				<div class="span12 content block">
+					<h1 class="t_center f_up f_small">Межрегиональная общественная организация по защите прав потребителей</h1>
+					<p>
+					Членом Межрегиональной Общественной Организации по Защите Прав Потребителей
+						&laquo;ВСЕРОССИЙСИКИЙ ВЫБОР ПОТРЕБИТЕЛЕЙ&raquo; может стать любой гражданин России (включая Крым), подавший заявление по адресу: <a href="mailto:vvp@oovvp.ru">vvp@oovvp.ru</a> и оплативший членские взносы за 3 месяца.
+					</p>
+					<p>Члены МООЗПП ВВП находятся под защитой в любом населённом пункте России.</p>
+
+					<p>Наша миссия – Улучшить качество жизни граждан России, создав такую социальную среду, в которой каждый гражданин взял на себя ответственность за
+					защиту своих прав, а нарушать закон о защите прав потребителей стало НЕВЫГОДНО.
+					</p>
+					<p>Члены организации считают, что качество жизни улучшилось – когда у гражданина есть чёткое ощущение защищённости, и уверенности в том, что законы работают:</p>
+					<ul>
+						<li>В подъезде чистота и порядок</li>
+						<li>Родители отпускают детей во двор играть, не опасаясь за их жизнь и здоровье</li>
+						<li>Автомобили служат долго и не ломаются из за плохих дорог</li>
+						<li>В сёлах и деревнях граждане получают качественное образование и медицинское обслуживание</li>
+						<li>Пенсионеров не обманывают недобросовестные продавцы, навязывая им покупку дорогих ненужных товаров</li>
+						<li>Продукты в магазинах соответствуют стандартам качества</li>
+						<li>В аптеках нет фальсифицированных лекарств</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<!--content-->
+
+		<!--bottom sub menu-->
+		<div class="container">
+			<div class="row-fluid">
+
+				<div class="span12 content block departments">
+					<h5 class="f_orange f_up t_center f_extra_big c_line">Департаменты</h5>
+					<div class="f_big block">
+						<div class="row-fluid">
+							<ul class="span6 fa-ul">
+								<li class="active">
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по борьбе с произволом банков и
+										коллекторов.</a></p>
+								</li>
+								<li>
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по борьбе с фальсификатором</a></p>
+								</li>
+								<li>
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав в сфере ЖКХ</a></p>
+								</li>
+							</ul>
+
+							<ul class="span6 fa-ul">
+
+								<li>
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав покупателей
+										розничных сетей</a></p>
+								</li>
+
+
+								<li>
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав дольщиков</a></p>
+								</li>
+								<li>
+									<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав потребителей</a></p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- bottom sub menu-->
+
+
+		<div class="push"></div>
+	</div>
+	<!--wrapper-->
+	
+	<!--footer-->
+	<div class="footer">
+		<div class="ft_top"></div>
+		<div class="ft_wrap block">
+			<div class="container block">
+				<div class="row-fluid">
+					
+					<div class="span4 margin_t_big ft_menu">
+						<div class="row-fluid">
+							<ul class="fa-ul">
+								<li class="span6 active">
+									<a href="/"><i class="fa fa-square fa-small"></i>Главная</a>
+								</li>
+								<li class="span6">
+									<a href="/"><i class="fa fa-square fa-small"></i>Статьи</a>
+								</li>
+							</ul>
+						</div>
+						<div class="row-fluid">
+							<ul class="fa-ul">
+								<li class="span6">
+									<a href="/"><i class="fa fa-square fa-small"></i>Вопрос-ответ</a>
+								</li>
+								<li class="span6">
+									<a href="/"><i class="fa fa-square fa-small"></i>Видео</a>
+								</li>
+							</ul>
+						</div>
+						<div class="row-fluid">
+							<ul class="fa-ul">
+								<li class="span6">
+									<a href="/"><i class="fa fa-square fa-small"></i>Новости</a>
+								</li>
+								<li class="span6">
+									<a href="/"><i class="fa fa-square fa-small"></i>Контакты</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="span4 margin_t_big">
+						<div class="social margin_b">
+							<a class="social_icon f" href="#"></a>
+							<a class="social_icon vk" href="#"></a>
+							<a class="social_icon ok" href="#"></a>
+						</div>
+						<p><span class="f_white">Разработка сайта: </span><a class="f_default" href="http://web-aspect.ru" target="_blank">web-aspect.ru</a></p>
+						<div>© 2013 - 2014 <a  class="f_default" href="/">oovvp.ru</a> Все права защищены.</div>
+					</div>
+					<div class="span4 margin_t">
+						<div class="margin_b"><span class="shadow_white"> тел.:&nbsp;&nbsp;&nbsp;</span> <span class="phone shadow_dark"> +7 (812)<span>30 90	661</span></span></div>
+						<div class="margin_b"><span class="shadow_white">email:&nbsp;&nbsp;&nbsp;</span><span class="phone shadow_dark"><a href="mailto:vvp@oovvp.ru">vvp@oovvp.ru</a></span></div>
+						<div class="adress shadow_white">191023, Россия, Санкт-Петербург ,Набережная реки Мойки, д.24, офис 26</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+	
+  </body>
+</html>

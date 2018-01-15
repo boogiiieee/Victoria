@@ -1,0 +1,62 @@
+/* ТЕКСТ */
+	html,body{color:#666666; height: 100%;}
+
+
+	a{color:#1A5DA2;}
+	.t_center{text-align:center;}
+	.block{padding:10px;}
+	.up{text-transform:uppercase;}
+	.t_center{text-align:center;}
+	.t_right{text-align:right;}
+	.margin_b{margin-bottom:20px;}
+	.margin_b_min{margin-bottom:10px;}
+	.margin_t{margin-top:10px;}
+	.margin_l{margin-left:20px;}
+	.margin_r_b{margin:0 10px 10px 0;}
+/* END ТЕКСТ */
+
+.wraper {
+	min-height: 100%;
+	height: auto!important;
+	height: 100%;
+	margin: 0 auto -140px;
+}
+#push {
+	height: 170px;
+}
+.errorlist{list-style:none; margin:0;}
+.error-block input, .error-block textarea{border: 1px solid #b94a48;}
+.f_error, .errorlist{color: #b94a48;}
+
+/*top menu*/
+
+.active a {background: #C30; color:#FFF}
+
+/*comment*/
+
+.form_question .fa-reply, .form_question .fa-comment-o {margin-right: 5px;}
+.form_question .fa-4 {
+	font-size: 4em;
+	color: #999;
+}
+.form_question {
+	padding: 1em;
+	background-color: #eeeeee;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+.form_question p {
+	font-size: 12px;
+	line-height: 18px;
+}
+.form_question time {display: inline-block;}
+.form_question h5 { margin:0}
+.form_question blockquote {
+	font-size: 12px;
+	line-height: 18px;
+	border: none;
+	margin: 0;
+	padding: 0 2em 0 0;
+	color: #444;
+}

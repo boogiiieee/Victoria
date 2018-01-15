@@ -1,0 +1,7 @@
+{% load filter_custom %}
+
+<h1>{{ item.get_title|first_word_orange }}</h1>
+<hr>
+<div class="f_extra_big slogan">
+	{{ item.get_text|safe }}
+</div>

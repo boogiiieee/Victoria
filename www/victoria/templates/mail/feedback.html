@@ -1,0 +1,21 @@
+{% extends "mail/mail.html" %}
+
+{% block top %}
+	<h2>Новое сообщение формы обратной связи на сайте {{ domain }}</h2>
+	<small>{{ item.date }}</small>
+{% endblock %}
+
+{% block content %}
+	<ul>
+		<li><strong>ФИО:</strong> {{ item.name }}</li>
+		{% if item.email %}
+			<li><strong>E-mail:</strong> {{ item.email }}</li>
+		{% endif %}
+		{% if item.phone %}
+			<li><strong>Телефон:</strong> {{ item.phone }}</li>
+		{% endif %}
+		<li><strong>Сообщение:</strong> {{ item.msg|safe|linebreaksbr }}</li>
+	</ul>
+	<br/>
+	<a href="http://{{ domain }}/admin/feedback/feedbackitem/{{ item.id }}/">Посмотреть сообщение на сайте</a>
+{% endblock %}

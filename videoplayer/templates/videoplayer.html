@@ -1,0 +1,48 @@
+{% load i18n %}
+
+<div id="video_container_{{ id }}">{% trans "Loading the player ..." %}</div>
+
+<script type="text/javascript">
+	jwplayer("video_container_{{ id }}").setup({
+		flashplayer: "{{ STATIC_URL }}js/videoplayer/player.swf",
+		file: "{{ file }}",
+		height: {{ config.height }},
+		width: {{ config.width }},
+		start: {{ config.start }},
+		title: "{{ config.title|safe }}",
+		description: "{{ config.description|safe }}",
+		{% if config.image %}image: "{{ config.image|safe }}",{% endif %}
+		{% if not config.controlbar %}controlbar: "none",{% endif %}
+		autostart: {% if config.autostart %}true{% else %}false{% endif %},
+		duration: {{ config.duration }},
+		volume: {{ config.volume }},
+		{% if config.events %}
+			events: { 
+				onReady: function(){ 
+					{% if config.events.onReady %}{{ config.events.onReady|safe }};{% endif %}
+				},
+				onVolume: function(){ 
+					{% if config.events.onVolume %}{{ config.events.onVolume|safe }};{% endif %}
+				},
+				onError: function(){ 
+					{% if config.events.onError %}{{ config.events.onError|safe }};{% endif %}
+				},
+				onPlay: function(){ 
+					{% if config.events.onPlay %}{{ config.events.onPlay|safe }};{% endif %}
+				},
+				onPause: function(){ 
+					{% if config.events.onPause %}{{ config.events.onPause|safe }};{% endif %}
+				},
+				onSeek: function(){ 
+					{% if config.events.onSeek %}{{ config.events.onSeek|safe }};{% endif %}
+				},
+				onComplete: function(){ 
+					{% if config.events.onComplete %}{{ config.events.onComplete|safe }};{% endif %}
+				},
+				onTime: function(){ 
+					{% if config.events.onTime %}{{ config.events.onTime|safe }};{% endif %}
+				}
+			}
+		{% endif %}
+	});
+</script>

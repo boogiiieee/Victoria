@@ -1,0 +1,35 @@
+{% extends "default.html" %}
+
+{% load front_admin_tags %}
+
+{% block content %}
+	{% FrontAdmin "/admin/article/article/" %}
+	{% if article_list %}
+			{% for item in article_list %}
+				<div class="row-fluid">
+					<div class="span1">
+						<i class="fa fa-file-text-o round_white f_extra_big icon_padding"></i>
+					</div>
+					<div class="span11">
+						<p>
+							<strong>
+								<span class="f_orange">{{ item.get_created_at|date:"d.m.Y" }}</span>
+							 - {{ item.get_title }}
+							</strong>
+						</p>
+						<p>
+							{{ item.get_text|striptags|safe|truncatewords:"35" }}
+							<a href="{{ item.get_absolute_url }}">
+								<i class="fa fa-location-arrow"></i>
+								Читать далее
+							</a>
+						</p>
+					</div>
+				</div>
+				<hr>
+			{% endfor %}
+		
+		{% include "paginate.html" %}
+
+	{% endif %}
+{% endblock %}

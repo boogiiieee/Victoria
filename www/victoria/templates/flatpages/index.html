@@ -1,0 +1,180 @@
+{% extends "default.html" %}
+{% load simpleblocks_tags front_admin_tags %}
+
+{% load thumbnail %}
+{% load front_admin_tags %}
+
+{% block breadcrumbs_all %}{% endblock %}
+
+{% block extra_media %}{% endblock %}
+
+{% block top %}
+	<!--slogan block-->
+	<div class="container">
+		<div class="row-fluid t_center b_block">
+			<div class="span6 block">
+				{% get_simpleblock 1 'simpleblocks/h2_hr_slogan.html' %}
+			</div>
+			<div class="span6 block">
+				<h3 class="f_extra_big3">Нас уже 12 579!</h3>
+				<button class="btn btn-warning btn-large">Подать заявление <br>на членство</button>
+			</div>
+		</div>
+	</div>
+	<!--end slogan block-->
+
+	<!--icon block-->
+	<div class="line margin_b_big">
+		<div class="container">
+			<div class="row-fluid b_block">
+
+				<div class="span4 block">
+					<div class="row-fluid">
+						<div class="span4 icon_block">
+							<span class="icon"></span>
+							<strong class="f_big">2 579</strong>
+							<strong><small>комиссаров </small></strong>
+							<strong><small>организации </small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon2"></span>
+							<strong class="f_big">9 124</strong>
+							<strong><small>поданных</small></strong>
+							<strong><small>заявок</small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon3"></span>
+							<strong class="f_big">1 824</strong>
+							<strong><small>поданных</small></strong>
+							<strong><small>претензий</small></strong>
+							<strong><small>предприятиям</small></strong>
+						</div>
+					</div>
+				</div>
+
+				<div class="span4 block">
+					<div class="row-fluid">
+						<div class="span4 icon_block">
+							<span class="icon icon4"></span>
+							<strong class="f_big">9 124</strong>
+							<strong><small>решенных</small></strong>
+							<strong><small>вопросов</small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon5"></span>
+							<strong class="f_big">3 579</strong>
+							<strong><small>предприятий,	на которые поданы жалобы</small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon6"></span>
+							<strong class="f_big">15 579</strong>
+							<strong><small>добровольно</small></strong>
+							<strong><small>исполненных</small></strong>
+							<strong><small>претензий</small></strong>
+						</div>
+					</div>
+				</div>
+
+				<div class="span4 block">
+					<div class="row-fluid">
+						<div class="span4 icon_block">
+							<span class="icon icon7"></span>
+							<strong class="f_big">9 124</strong>
+							<strong><small>поданых</small></strong>
+							<strong><small>исков</small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon8"></span>
+							<strong class="f_big">6 169</strong>
+							<strong><small>выигранных</small></strong>
+							<strong><small>исков</small></strong>
+						</div>
+						<div class="span4 icon_block">
+							<span class="icon icon9"></span>
+							<strong class="f_big">21 154 523</strong>
+							<strong><small>взысканных</small></strong>
+							<strong><small>денег в пользу</small></strong>
+							<strong><small>потребителей</small></strong>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--end icon_block-->
+
+	<!--send abuse-->
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span12 block">
+				<div class="row-fluid">
+					<div class="span3"></div>
+					<div class="span6 t_center">
+						{% get_simpleblock 2 'simpleblocks/h4_hr_slogan.html' %}
+						<button class="btn btn-warning btn-large f_up f_extra_big b_block margin_t_big">Подать жалобу</button>
+					</div>
+					<div class="span3"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!--end send abuse-->
+{% endblock %}
+
+{% block flatpage %}
+	{% if request.flatpage %}
+		<div class="t_center">
+			<h1 class="main_page">
+				{% FrontAdmin request.flatpage.get_admin_url %}
+				{{ request.flatpage.title }}
+			</h1>
+		</div>
+		{% if request.flatpage.content %}
+			{{ request.flatpage.content|safe }}
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block bottom %}
+	<!--bottom sub menu-->
+	<div class="container">
+		<div class="row-fluid">
+
+			<div class="span12 block departments">
+				<h5 class="f_orange f_up t_center f_extra_big c_line">Департаменты</h5>
+				<div class="f_big block">
+					<div class="row-fluid">
+						<ul class="span6 fa-ul">
+							<li class="active">
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по борьбе с произволом банков и
+									коллекторов.</a></p>
+							</li>
+							<li>
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по борьбе с фальсификатором</a></p>
+							</li>
+							<li>
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав в сфере ЖКХ</a></p>
+							</li>
+						</ul>
+
+						<ul class="span6 fa-ul">
+							<li>
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав покупателей
+									розничных сетей</a></p>
+							</li>
+							<li>
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав дольщиков</a></p>
+							</li>
+							<li>
+								<p><a href="#"><i class="fa fa-square fa-small"></i>Департамент по защите прав потребителей</a></p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- bottom sub menu-->
+{% endblock %}

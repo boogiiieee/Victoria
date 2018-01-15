@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load thumbnail %}
+{% load copyrigth_tags simpleblocks_tags front_admin_tags %}
+
+<html>
+/*
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+		<title>{% block title %}{{ request.flatpage.get_title }}{% endblock %}</title>
+		<meta name="description" content="{% block description %}{{ request.flatpage.get_description }}{% endblock %}" />
+		<meta name="keywords" content="{% block keywords %}{{ request.flatpage.get_keywords }}{% endblock %}" />
+		
+		<link href="{{ STATIC_URL }}favicon.ico" rel="icon" />
+		<meta name="author" content="web-aspect.ru">
+		
+		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" media="screen" href="{{ STATIC_URL }}js/bootstrap/css/bootstrap.min.css">
+		<script type="text/javascript" src="{{ STATIC_URL }}js/bootstrap/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.css" rel="stylesheet">
+
+		
+		<!--<script type="text/javascript" src="{{ STATIC_URL }}js/lightbox/js/lightbox.js"></script>
+		<link rel="stylesheet" media="screen" href="{{ STATIC_URL }}js/lightbox/css/lightbox.css">-->
+
+		<link rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/style.css">
+		
+		{% block extra_media %}{% endblock %}
+	</head>
+		
+	<body>
+		<div class="wraper">
+			<div id="header">
+				<div class="container">
+					<div class="row-fluid">
+						<!--<div class="span3" id="logo">
+							<a class="span3" href="/" title="{{ request.config.title }}"><img src="{{ STATIC_URL }}img/logo.png"></a>
+							<span class="span9 title">{% FrontAdmin "/admin/configuration/configmodel/1/" %} {{ request.config.slogan }}<span>
+						</div>-->
+						<div class="span12">
+							<div class="row-fluid">
+								<ul class="nav inline pull-right">
+									<li class="{% if request.flatpage.url == '/' %}active{% endif %}"><a href="/"><span>Главная</span></a></li>
+									<li  class="{% if request.flatpage.url == '/defence/' %}active{% endif %}"><a href="/defence/"><span>Защита прав</span></a></li>
+									<li  class="{% if active == 'forum' %}active{% endif %}"><a href="#"><span>Форум комиссаров</span></a></li>
+									<li  class="{% if request.flatpage.url == '/abuse/' %}active{% endif %}"><a href="/abuse/"><span>База жалоб</span></a></li>
+									<li  class="{% if request.flatpage.url == '/court_base/' %}active{% endif %}"><a href="/court_base/"><span>База судебных решений</span></a></li>
+									<li  class="{% if active == 'question' %}active{% endif %}"><a href="{% url 'question_url' %}"><span>Вопрос-ответ</span></a></li>
+									<li class="{% if active == 'news' %}active{% endif %}"><a href="{% url 'news_list_url' %}"><span>Новости</span></a></li>
+									<li class="{% if active == 'article' %}active{% endif %}"><a href="{% url 'article_list_url' %}"><span>Статьи</span></a></li>
+									<li  class="{% if active == 'contacts' %}active{% endif %}"><a href="{% url 'contacts_url' %}"><span>Контакты</span></a></li>
+                                    <li  class="{% if active == 'video' %}active{% endif %}"><a href="{% url 'video_list_url' %}"><span>Видео</span></a></li>
+                                    <li  class="{% if active == 'forum' %}active{% endif %}"><a href="{% url 'overview' %}"><span>Форум</span></a></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div id="top_block" class="">
+				{% block top %}{% endblock %}
+			</div>
+			<div id="breadcrumb">
+				<div class="container">
+					{% block breadcrumbs_all %}
+						<ul class="breadcrumb">
+							<li><a href="/">Главная</a> <span class="divider">/</span></li>
+							{% block breadcrumbs %}
+								<li class="active">{{ request.flatpage.title }}</li>
+							{% endblock %}
+						</ul>
+					{% endblock %}
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row-fluid">
+					
+					<div class="span12">
+						
+						{% block content_all %}
+							{% block flatpage %}
+								{% if request.flatpage %}
+									{% FrontAdmin request.flatpage.get_admin_url %}
+									<h1>{{ request.flatpage.title }}</h1>
+									{% if request.flatpage.content %}
+										<div>{{ request.flatpage.content|safe }}</div>
+									{% endif %}
+								{% endif %}
+							{% endblock %}
+							
+							{% block content %}{% endblock %}
+							
+							{% block bottom %}{% endblock %}
+						{% endblock %}
+					</div>
+				</div>
+				<div id="push"></div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			<div class="container">
+				<div class="row-fluid">
+					<div class="span4">
+						<h4>МЕНЮ</h4>
+						
+					</div>
+					
+					<div class="span4">
+						<h4>КОНТАКТЫ</h4>
+						{% FrontAdmin "/admin/simpleblocks/block/1" %}
+						{% get_simpleblock 1 %}
+					</div>
+					
+					<div class="span4">
+						<div class="row-fluid">
+							<h4>{{ request.config.slogan }}</h4>
+							<div>© {% get_copyright 2013 %} {% FrontAdmin "/admin/configuration/configmodel/1/" %}<a href="/">{{ request.config.title }}</a> Все права защищены.</div>
+							<div>Создание сайта: <a href="http://web-aspect.ru" title="Создание сайта" target="_blank">Web-aspect</a></div>
+							<div style="display:none">
+								<!-- Yandex.Metrika informer -->
+								<a href="https://metrika.yandex.ru/stat/?id=24790790&amp;from=informer"
+								target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/24790790/1_0_2369B1FF_034991FF_1_pageviews"
+								style="width:80px; height:15px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры)" onclick="try{Ya.Metrika.informer({i:this,id:24790790,lang:'ru'});return false}catch(e){}"/></a>
+								<!-- /Yandex.Metrika informer -->
+
+								<!-- Yandex.Metrika counter -->
+								<script type="text/javascript">
+								(function (d, w, c) {
+									(w[c] = w[c] || []).push(function() {
+										try {
+											w.yaCounter24790790 = new Ya.Metrika({id:24790790,
+													webvisor:true,
+													clickmap:true,
+													trackLinks:true,
+													accurateTrackBounce:true});
+										} catch(e) { }
+									});
+
+									var n = d.getElementsByTagName("script")[0],
+										s = d.createElement("script"),
+										f = function () { n.parentNode.insertBefore(s, n); };
+									s.type = "text/javascript";
+									s.async = true;
+									s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+									if (w.opera == "[object Opera]") {
+										d.addEventListener("DOMContentLoaded", f, false);
+									} else { f(); }
+								})(document, window, "yandex_metrika_callbacks");
+								</script>
+								<noscript><div><img src="//mc.yandex.ru/watch/24790790" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+								<!-- /Yandex.Metrika counter -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>                    
+</html>

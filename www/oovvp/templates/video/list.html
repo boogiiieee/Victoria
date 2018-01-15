@@ -1,0 +1,30 @@
+{% extends "default.html" %}
+
+{% load widget_tweaks front_admin_tags embed_video_tags videoplayer_tags %}
+
+{% block extra_media %} 
+	{% VideoPlayerMedia %}
+{% endblock %}
+
+{% block content %}
+	{% FrontAdmin "/admin/video/item/" %}
+	{% if video_list %}
+        <div class="row-fluid">
+            {% for item in video_list %}
+                <div class="span3">
+                    {% if item.get_category == 'URL' %}
+                        <h4>{{ item.title }}</h4>
+		                {% video item.video_url "100% x 250" %}
+                    {% else %}
+                        <h4>{{ item.title }}</h4>
+		                {% VideoFile item.video_file %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% include "paginate.html" %}
+
+	{% endif %}
+
+{% endblock %}

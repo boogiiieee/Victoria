@@ -1,0 +1,111 @@
+{% extends "default.html" %}
+
+{% load widget_tweaks front_admin_tags map2gis_tags_zoom contacts_tags %}
+
+{% block extra_media %} 
+	{% media_map2gis %} 
+	<script>
+		$(function(){	
+			var alert = $('.alert'),
+			info = $('.alert-info');
+			function scroll_to(elem, y){
+				$('body, html').animate({ scrollTop: elem.offset().top - y}, 1000);
+				return false;
+			};
+			if ( alert.length > 0 ) {
+				scroll_to(alert, 100); 
+			};
+			if ( info.length > 0 ) {
+				scroll_to(info, 100); 
+			};
+		});
+	</script>
+{% endblock %}
+
+{% block content %}
+	
+	{% get_contact_info %} 
+		{% if contacts %}
+			{% FrontAdmin contacts.get_admin_url %}
+			<div id="contact_info" class="row-fluid">
+				<div class="span12">
+					<h4>{{ contacts.get_title }}</h4>
+					{% if contacts.get_alt_adress %}
+						<p><b>Адрес:</b> {{ contacts.get_alt_adress }} {% if contacts.get_desc_adress %} ( {{ contacts.get_desc_adress }} ) {% endif %}</p>
+					{% elif contacts.get_map_adress %}
+						<p><b>Адрес:</b> {{ contacts.get_map_adress }} {% if contacts.get_desc_adress %} ( {{ contacts.get_desc_adress }} ) {% endif %}</p>
+					{% endif %}
+					{% if contacts.description %} {{ contacts.description|safe|linebreaks }} {% endif %}
+					{% if contacts.adress %}
+						<div class="map">
+							{% get_map2gis_zoom contacts.get_adress "100%" "350px" 17 %}
+						</div>
+						<br>
+					{% endif %}
+					{% if phone_list %}
+						<p><b>Наши телефоны:</b></p>
+						{% for phone in phone_list %}
+							<p>{{ phone }} {% if phone.get_desc_phone %} (<b>{{ phone.get_desc_phone }}</b>) {% endif %}</p>
+						{% endfor %}
+						<br>
+					{% endif %}	
+					{% if contacts.get_work_time %}
+						<p>Часы работы: <b>{{ contacts.get_work_time }}</b></p>
+						<br>
+					{% endif %}
+					{% if contacts.get_site %}
+						<p>Сайт: <a href="{{ contacts.get_full_site }}">{{ contacts.get_site }}</a></p>
+						<br>
+					{% endif %}
+					{% if phone_list %}
+						<p><b>EMail:</b></p>
+						{% for email in email_list %}
+							<p><a href="mailto:{{ email }}"> {{ email }} </a>{% if email.get_desc_email %} (<b>{{ email.get_desc_email }}</b>) {% endif %}</p>
+						{% endfor %}
+						<br>
+					{% endif %}
+					{% if contacts.get_skype %}
+						<p>Skype: <a href="skype:{{ contacts.get_skype }}?call">{{ contacts.get_skype }}</a></p>
+						<br>
+					{% endif %}
+					{% if social_list %}
+						<p><b>Мы в социальных сетях:</b></p>
+						{% for soc in social_list %}
+							<p>{{ soc.title }} {% if soc.get_social_url %} <a href="{{ soc.get_social_url }}">{{ soc.get_social_url }}</a> {% endif %}</p>
+						{% endfor %}
+						<br>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+		
+		<div id="feedback_form" class="row-fluid">
+			<div class="span12">			
+				{% FrontAdmin "/admin/feedback/feedbackitem/" %}
+				<h4>Напишите нам</h4>
+				{{ form.media }}
+				<form class="form form-inline" action="" method="post">{% csrf_token %}
+					{% include "messages.html" %}
+					{% if form.errors %}
+						<div class="alert alert-error">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Ошибка!</strong> {% if form.non_field_errors %}{{ form.non_field_errors }}{% else %}Исправьте ошибки и повторите попытку.{% endif %}
+						</div>
+					{% endif %}
+					{% for field in form %}
+						<div class="row-fluid margin_b_min {% if field.errors %}error-block{% endif %}">
+							<div class="form-group">
+								<label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="f_error">&nbsp;*</span>{% endif %}</label>
+								{{ field|add_class:'span12' }}
+								<div class="clearfix"></div>
+								{% if field.help_text %}<div class="t_right"><small>{{ field.help_text }}</small></div>{% endif %}
+								{% if field.errors %}<div class="t_right"><small>{{ field.errors }}</small></div>{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+					<input class="btn btn-primary pull-right" type="submit" value="Отправить">
+				</form>
+			</div>
+			
+		</div>
+{% endblock %}

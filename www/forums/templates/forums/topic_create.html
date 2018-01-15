@@ -1,0 +1,51 @@
+{% extends "default.html" %}
+
+{% load i18n %}
+
+{% load front_admin_tags %}
+
+{% block title %}
+{% trans "Forums" %} - {{block.super}}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <li><span><a href="{% url 'forums:overview' %}">{% trans "Forums" %}</a></span><span class="divider">/</span></li>
+  <li><span><a href="{% url 'forums:overview' %}#{{forum.category.id}}">{{forum.category.name}}</a></span><span class="divider">/</span>
+  </li>
+  <li><span><a href="{% url 'forums:forum' forum.id %}">{{forum.name}}</a></span> <span class="divider">/</span></li>
+  <li class="active">{% trans "Create topic" %}</li>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>{% trans "Forums" %}</h1>
+</div>
+{% FrontAdmin '/admin/forums/topic/' %}
+<div class="row">
+  <div class="span3">
+    <div class="thumbnail pull-left" style="margin-right: 15px;">
+      <img src="http://placehold.it/64x64" alt="avatar">
+    </div>
+    <div>
+      <p>{{user.username}}</p>
+    </div>
+  </div>
+  <div class="span9">
+    <form method="post" action="{% url 'forums:topic_create' forum.id %}">
+      {% csrf_token %}
+      {% for field in form %}
+      	  <div class="row-fluid margin_b_min {% if field.errors %}error-block{% endif %}">
+			  <div class="form-group">
+				  <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="f_error">&nbsp;*</span>{% endif %}</label>
+				  {{ field }}
+				  <div class="clearfix"></div>
+				  {% if field.help_text %}<div class="t_right"><small>{{ field.help_text }}</small></div>{% endif %}
+				  {% if field.errors %}<div class="t_right"><small>{{ field.errors }}</small></div>{% endif %}
+			  </div>
+          </div>
+      {% endfor %}
+      <p><input type="submit" class="btn btn-primary" value="{% trans "Create topic" %}"></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

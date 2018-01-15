@@ -1,0 +1,25 @@
+{% extends "default.html" %}
+
+{% load thumbnail %}
+{% load front_admin_tags %}
+
+{% block content %}
+	{% FrontAdmin "/admin/news/news/" %}
+	{% if news_list %}		
+		{% for item in news_list %}
+			<div class="row-fluid">
+				<div class="date">{{ item.get_created_at|date:"d.m.Y" }}<br/>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading"><a href="{{ item.get_absolute_url }}">{{ item.get_title }}</a></h3>
+					<div>{{ item.get_text|striptags|safe|truncatewords:"30" }}</div>
+					<div class="clr"></div>
+					<a class="link_more pull-right" href="{{ item.get_absolute_url }}">Читать далее »</a>
+				</div>
+			</div>
+		{% endfor %}
+		
+		{% include "paginate.html" %}
+
+	{% endif %}
+{% endblock %}

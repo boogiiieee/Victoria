@@ -1,0 +1,15 @@
+var DG;DG||(DG={});
+(function(f){var e={applyDocWrite:false,apiFail:false,apiFailMsg:null,isReady:false,cbmethod:null,jsUrl:null,cssUrl:null,loadLib:function(){if(this.applyDocWrite)document.write('<script type="text/javascript" charset="utf-8" src="'+this.jsUrl+'"><\/script>'),document.write('<link rel="stylesheet" href="'+this.cssUrl+'"/>'),this.isReady=true;else{var b=document.head||document.getElementsByTagName("head")[0]||document.documentElement,a=document.createElement("script"),c=false;a.type="text/javascript";
+a.async=true;a.charset="utf-8";a.src=this.jsUrl;a.onload=a.onreadystatechange=function(){if(!c&&(!a.readyState||/loaded|complete/.test(a.readyState)))c=true,DG.isReady=true,a.onload=a.onreadystatechange=null,a&&a.parentNode&&a.parentNode.removeChild(a),DG.cbmethod&&DG.cbmethod()};var d=document.createElement("link");d.href=this.cssUrl;d.rel="stylesheet";d.type="text/css";b.appendChild(a);b.appendChild(d)}},load:function(b){if(this.apiFail)this.onFail(this.apiFailMsg);else this.isReady?b():(this.cbmethod=
+b,this.loadLib())},autoload:function(b){if(typeof b=="function")this.apiFail?(this.onFail.arguments=[this.apiFailMsg],this._setCallbackOnLoad(this.onFail)):this._setCallbackOnLoad(b);else throw"Load callback should be function.";},_setCallbackOnLoad:function(b){window.addEventListener?window.addEventListener("load",b,false):window.attachEvent("onload",b)},onFail:function(){throw"Incorrect JS API version.";},CLASS_NAME:"DG"},c;for(c in e)e.hasOwnProperty(c)&&(f.DG[c]=e[c])})(window);
+DG.Validators={};DG.Validators.WKT={};DG.Transport={};DG.Geoclicker={};DG.Geoclicker.Helpers={};
+
+    DG.jsUrl = 'http://maps.api.2gis.ru/1.0/dg-js/dg.js?v=170';
+    DG.cssUrl = 'http://maps.api.2gis.ru/1.0/dg-css/dg.css?v=170';
+    DG.enabledLangs = ['ru','it','en','cs'];
+    
+    DG.defaultLang = 'ru';
+    DG.userDefinedLang = 'auto';
+    DG.applyDocWrite = true;
+    DG.loadLib();
+    DG.applyDocWrite = false;

@@ -1,0 +1,72 @@
+{% extends "default.html" %}
+{% load widget_tweaks %}
+{% load front_admin_tags %}
+
+{% block content %}
+	<div id="question" class="row-fluid">
+			<h2>Задайте свой вопрос</h2>
+			{{ form.media }}
+			<form class="form form-inline clearfix" action="" method="post">{% csrf_token %}
+				{% include "messages.html" %}
+				{% if form.errors %}
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Ошибка!</strong> {% if form.non_field_errors %}{{ form.non_field_errors }}{% else %}Исправьте ошибки и повторите попытку.{% endif %}
+					</div>
+				{% endif %}
+				<div class=="row-fluid">
+				{% for field in form %}
+					{% if forloop.counter0|divisibleby:"2" and not forloop.last %}<div class="span6">{% endif %}
+					{% if forloop.last %}<div class=="row-fluid"><div class="span12">{% endif %}
+					<div class="row-fluid margin_b_min {% if field.errors %}error-block{% endif %}">
+						<div class="form-group clearfix">
+							<label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="f_error">&nbsp;*</span>{% endif %}</label>
+							{{ field|add_class:'span12' }}
+							{% if field.help_text %}<div class="t_right"><small>{{ field.help_text }}</small></div>{% endif %}
+							{% if field.errors %}<div class="t_right"><small>{{ field.errors }}</small></div>{% endif %}
+						</div>
+					</div>
+					{% if forloop.last %}</div></div>{% endif %}
+					{% if forloop.counter|divisibleby:"2" %}</div>{% endif %}					
+				{% endfor %}
+				<input class="btn btn-primary pull-right clearfix" type="submit" value="Отправить">
+				</div>
+			</form>
+	
+			{% if question_list %}
+			<div class="row-fluid">
+			{% FrontAdmin "/admin/questionanswer/item/" %}
+			<h2> Вопросы пользователей:</h2>
+			{% for item in question_list %}
+				{% if item.get_answer %}
+				<div class="form_question margin_b">
+					<div class="row-fluid">
+						<div class="span12 margin_b_min">
+							<h5><i class="fa fa-comment-o"></i><span>{{ item.name }}</span></h5>
+							<time class="margin_b_min"><small><i> {{ item.date_question }}</i></small> </time>
+							<blockquote class="clearfix"><i class="fa fa-quote-left fa-4 pull-left"></i>
+								<p class="margin_b_min">Тема: <b><i>{{ item.get_subject }}</i></b></p>
+								{{ item.get_question|safe|linebreaks }}
+							</blockquote>
+						</div>
+						<div class="span12">
+							<h5><i class="fa fa-reply"></i><span>{{ item.name_answer|safe|default:"Администрация" }}</span></h5>
+							{% if item.date_answer %}<time class="margin_b_min"><small><i> {{ item.date_answer }}</i></small> </time>{% endif %}
+							<blockquote class="clearfix"><i class="fa fa-quote-left fa-4 pull-left"></i>
+								<p class="margin_b_min">Тема: <b><i>{{ item.get_subject }}</i></b></p>
+								{{ item.get_answer|safe|linebreaks }}
+							</blockquote>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			{% endfor %}
+			
+			{% include "paginate.html" %}
+			
+			</div>
+			{% endif %}
+		
+		
+	</div>
+{% endblock %}

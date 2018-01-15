@@ -1,0 +1,155 @@
+{% extends "default.html" %}
+
+{% load widget_tweaks %}
+{% load front_admin_tags filter_custom %}
+
+{% block content_all %}
+	<div class="row-fluid">
+		<div class="t_center">
+			{% if request.flatpage.title %}
+				{% FrontAdmin request.flatpage.get_admin_url %}
+				<h1>
+					{{ request.flatpage.title|first_word_orange }}</h1>
+			{% else %}
+				<h1><span class="f_orange">Вопрос</span> - ответ</h1>
+			{%  endif %}
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		<div class="span6">
+			{% if request.flatpage.content %}
+				{% FrontAdmin request.flatpage.get_admin_url %}
+				<div class="f_extra_big slogan">{{ request.flatpage.content|safe }}</div>
+			{%  endif %}
+		</div>
+
+		<div class="span6">
+			{% FrontAdmin '/admin/questionanswer/' %}
+			{{ form.media }}
+			<form class="question_form" action="" method="post">{% csrf_token %}
+				{% include "messages.html" %}
+				{% if form.errors %}
+					<div class="alert alert-error">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Ошибка!</strong> {% if form.non_field_errors %}{{ form.non_field_errors }}{% else %}Исправьте ошибки и повторите попытку.{% endif %}
+					</div>
+				{% endif %}
+				<div class="row-fluid">
+					<div class="span6 input-prepend">
+						<span class="add-on span2"><i class="fa fa-user"></i></span>
+						{{ form.name|add_error_class:'errors' }}
+					</div>
+					<div class="span6 input-prepend">
+						<span class="add-on span2"><i class="fa fa-envelope"></i> </span>
+						{{ form.email }}
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span6 input-prepend">
+						<span class="add-on span2"><i class="fa fa-phone"></i></span>
+						{{ form.phone }}
+					</div>
+					<div class="span6">
+						<div class="row-fluid">
+							{{ form.captcha|add_error_class:'errors' }}
+							<!--{% if form.captcha.errors %}{{ form.captcha.errors }}{% endif %}-->
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12 pos_r">
+						<span class="icon_subject"></span>
+						{{ form.subject|add_error_class:'errors'}}
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						{{ form.question|add_error_class:'errors' }}
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12 t_right">
+						<input class="btn  btn-warning" type="submit" value="Отправить">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span4">
+			{% FrontAdmin "/admin/questionanswer/subject/" %}
+			<h3 class="t_center c_line f_up"> <span class="f_orange">Рубрикатор</span> вопросов</h3>
+		</div>
+		<div class="span8">
+			{% FrontAdmin "/admin/questionanswer/item/" %}
+			<h3 class="c_line_min_left f_up c_line_r_full"> <span class="f_orange">Вопросы </span>пользователей:</h3>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span4 sub_menu">
+			<div class="row-fluid">
+				<ul class="f_big clearfix">
+					<li class="active span12">
+						<a href="#"><i class="fa fa-square fa-small"></i>Защита прав
+						потребителей</a>
+					</li>
+					<li class="span12">
+						<a href="#"><i class="fa fa-square fa-small"></i>Гражданское право</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		{% if question_list %}
+			<div class="span8 b_l padding_l_big">
+					{% for item in question_list %}
+						{% if item.get_answer %}
+						<div class="form_question">
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="row-fluid">
+										<div class="span1">
+											<i class="fa fa-comments-o round_black f_extra_big"></i>
+										</div>
+										<div class="span11 padding_l_big">
+											<p><strong>{{ item.name }} - </strong>
+												<time><i> {{ item.date_question }}</i></time>
+											</p>
+											<blockquote>
+												{{ item.get_question|safe|linebreaks }}
+											</blockquote>
+										</div>
+									</div>
+								</div>
+								<div class="span12">
+									<div class="row-fluid">
+										<div class="span1"></div>
+										<div class="span1">
+											<i class="fa fa-level-up round_white f_extra_big rotate icon_padding"></i>
+										</div>
+										<div class="span10 padding_l_big">
+											<p><strong>{{ item.name_answer }} - </strong>
+												{%  if item.date_answer %}
+													<time><i>{{ item.date_answer }}</i></time>
+												{% endif %}
+											</p>
+											<blockquote>
+												{{ item.get_answer|safe|linebreaks }}
+											</blockquote>
+										</div>
+									</div>
+									<hr>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+					{% endfor %}
+
+			{% include "paginate.html" %}
+
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

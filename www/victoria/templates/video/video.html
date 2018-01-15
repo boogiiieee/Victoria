@@ -1,0 +1,33 @@
+{% extends "default.html" %}
+
+{% load thumbnail %}
+{% load front_admin_tags %}
+
+{% block title %}{{ object.get_title }}{% endblock %}
+{% block description %}{{ object.get_description }}{% endblock %}
+{% block keywords %}{{ object.get_keywords }}{% endblock %}
+
+{% block breadcrumbs %}
+		<li><span><a href="{% url 'article_list_url' %}">Статьи</a></span> <span class="divider">/</span></li>
+		<li class="active">{{ object.get_title }}</li>
+{% endblock %}
+
+{% block content %}
+	{% FrontAdmin object.get_admin_url %}
+	<div class="row-fluid">
+		<h1><span class="pull-right muted">{{ object.get_created_at|date:"d.m.Y" }}</span>{{ object.get_title }}</h1>
+		
+		
+		{% with object.get_image as image %}
+			{% if image %}
+				{% thumbnail image "200x200" format="PNG" as im %}
+					<img class="pull-left margin_r_b" src="{{ im.url }}" alt="{{ object.get_title }}" />
+				{% endthumbnail %}
+			{% endif %}
+		{% endwith %}
+		
+		<div>{{ object.get_text|safe }}</div>
+		
+		<a class="link_more pull-right" href="{% url 'article_list_url' %}">Все статьи</a>
+	</div>
+{% endblock %}

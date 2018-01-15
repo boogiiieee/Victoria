@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-27 10:39+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: .\__init__.py:5 .\templates\forums\category_list.html.py:8
+#: .\templates\forums\category_list.html.py:12
+#: .\templates\forums\category_list.html.py:18
+#: .\templates\forums\forum_detail.html.py:8
+#: .\templates\forums\forum_detail.html.py:12
+#: .\templates\forums\forum_detail.html.py:20
+#: .\templates\forums\post_create.html.py:8
+#: .\templates\forums\post_create.html.py:12
+#: .\templates\forums\post_create.html.py:21
+#: .\templates\forums\topic_create.html.py:8
+#: .\templates\forums\topic_create.html.py:12
+#: .\templates\forums\topic_create.html.py:21
+#: .\templates\forums\topic_detail.html.py:8
+#: .\templates\forums\topic_detail.html.py:12
+#: .\templates\forums\topic_detail.html.py:21
+msgid "Forums"
+msgstr "Форумы"
+
+#: .\models.py:9 .\models.py:23 .\models.py:59
+msgid "Name"
+msgstr "Имя"
+
+#: .\models.py:10 .\models.py:24
+msgid "Position"
+msgstr "Позиция"
+
+#: .\models.py:25
+msgid "Description"
+msgstr "Описание"
+
+#: .\models.py:26
+msgid "Is closed"
+msgstr "Закрыто"
+
+#: .\models.py:60
+msgid "Last post"
+msgstr "Последний пост"
+
+#: .\models.py:79
+msgid "Created"
+msgstr "Создано"
+
+#: .\models.py:80
+msgid "Updated"
+msgstr "Обновлено"
+
+#: .\models.py:81
+msgid "Body"
+msgstr "Текст"
+
+#: .\views.py:46 .\views.py:79
+msgid "You do not have the permissions to create a topic."
+msgstr "У вас не достаточно прав доступа для создания топика"
+
+#: .\templates\forums\category_list.html.py:26
+#: .\templates\forums\forum_detail.html.py:27
+msgid "Last Poster"
+msgstr "Последний написавший"
+
+#: .\templates\forums\category_list.html.py:27
+#: .\templates\forums\forum_detail.html.py:26
+msgid "Topics"
+msgstr "Топики"
+
+#: .\templates\forums\category_list.html.py:28
+msgid "Posts"
+msgstr "Посты"
+
+#: .\templates\forums\forum_detail.html.py:28
+msgid "Replies"
+msgstr "Ответы"
+
+#: .\templates\forums\forum_detail.html.py:29
+msgid "Views"
+msgstr "Просмотры"
+
+#: .\templates\forums\forum_detail.html.py:46
+msgid "Нет топиков в этом форуме, только администраторы могут создавать и писать здесь."
+msgstr ""
+
+#: .\templates\forums\forum_detail.html.py:50
+msgid "No topics in this forum, create one :)"
+msgstr "Нет топиков в этом форуме, создайте топик первым!"
+
+#: .\templates\forums\forum_detail.html.py:57
+#: .\templates\forums\topic_create.html.py:16
+#: .\templates\forums\topic_create.html.py:47
+msgid "Create topic"
+msgstr "Создать топик"
+
+#: .\templates\forums\post_create.html.py:16
+#: .\templates\forums\post_create.html.py:47
+#: .\templates\forums\topic_detail.html.py:50
+msgid "Create post"
+msgstr "Создать пост"
+
+#: .\templates\forums\topic_detail.html.py:52
+msgid "This forum is closed, only admins can create and post here."
+msgstr "Этот форум закрыт, только администраторы могут создавать и писать здесь."
